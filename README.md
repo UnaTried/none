@@ -12,7 +12,7 @@ if [[ $DEBUGPKGS = "" ]]; then
 Results in:
 ```
 line 6: syntax error near unexpected token `elif'
-line 6: `		elif yay -Rns $(yay -Qq | grep -- -debug) --noconfirm &> /dev/null ; then'
+line 6: `elif yay -Rns $(yay -Qq | grep -- -debug) --noconfirm &> /dev/null ; then'
 ```
 
 But with none:
