@@ -14,5 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Makepkg PrintSrcInfo Build and Check
+        uses: smallstep/pkgbuild-action@v1.0.1
       - name: Creating the .SRCINFO file
         run: makepkg --printsrcinfo > .SRCINFO
