@@ -1,6 +1,7 @@
 # none: A placeholder command to use in scripts
 A use case:
 ```
+DEBUGPKGS=$(yay -Qq | grep -- -debug)
 if [[ $DEBUGPKGS = "" ]]; then
 		elif yay -Rns $(yay -Qq | grep -- -debug) --noconfirm &> /dev/null ; then
 			notify-send $(echo -e "Removed these packages with a '-debug' suffix:\n$DEBUGPKGS")
@@ -16,6 +17,7 @@ line 6: `		elif yay -Rns $(yay -Qq | grep -- -debug) --noconfirm &> /dev/null ; 
 
 But with none:
 ```
+DEBUGPKGS=$(yay -Qq | grep -- -debug)
 		if [[ $DEBUGPKGS = "" ]]; then
 			none
 		elif yay -Rns $(yay -Qq | grep -- -debug) --noconfirm &> /dev/null ; then
