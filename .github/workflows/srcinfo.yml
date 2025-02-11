@@ -1,20 +1,22 @@
-
 name: .SRCINFO
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
-  build:
+  pkgbuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: smallstep/pkgbuild-action@v1.0.1
-      - name: Creating the .SRCINFO file
-        id: makepkg
-        run: makepkg --printsrcinfo > .SRCINFO
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Makepkg Build and Check
+      id: makepkg
+      uses: smallstep/pkgbuild-action@v1.0.1
+    - name: Print Package Files
+      run: |
+        echo "Successfully created the following package archive"
+        echo "Package: ${{ steps.makepkg.outputs.pkgfile0 }}"
+    # Uncomment to upload the package as an artifact
+    # - name: Upload Package Archive
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     path: ${{ steps.makepkg.outputs.pkgfile0 }}
